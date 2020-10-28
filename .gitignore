@@ -5,7 +5,6 @@ automation/stack/**/terragrunt.hcl
 !automation/stack/microservice/terragrunt.hcl
 automation/stack/microservice/*.json
 .DS_Store
-Dockerfile
 
 # Terraform
 automation/stack/mainsite/terragrunt.hcl
