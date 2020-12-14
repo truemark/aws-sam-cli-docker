@@ -18,7 +18,7 @@ pipelines:
                 - docker
               script:
                 - docker login --username $DOCKER_HUB_USER --password $DOCKER_HUB_PASS
-                - docker build -t $DOCKER_IMAGE_NAME:$BITBUCKET_BUILD_NIMBER-golang --target golang .
+                - docker build -t $DOCKER_IMAGE_NAME:$BITBUCKET_BUILD_NUMBER-golang --target golang .
                 - docker tag $DOCKER_IMAGE_NAME:$BITBUCKET_BUILD_NUMBER-golang $DOCKER_IMAGE_NAME:golang
                 - docker push $DOCKER_IMAGE_NAME:$BITBUCKET_BUILD_NUMBER-golang
                 - docker push $DOCKER_IMAGE_NAME:golang
