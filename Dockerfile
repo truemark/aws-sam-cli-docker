@@ -1,8 +1,8 @@
 FROM python:3.9-alpine as base
 RUN apk update && \
     apk --no-cache upgrade && \
-    apk add bash && \
-    apk add --no-cache --virtual build-deps build-base gcc make && \
+    apk add --no-cache bash make && \
+    apk add --no-cache --virtual build-deps build-base gcc && \
     pip install --no-cache-dir aws-sam-cli && \
     apk del build-deps
 ENTRYPOINT ["/usr/local/bin/sam"]
