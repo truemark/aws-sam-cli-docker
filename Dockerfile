@@ -2,7 +2,7 @@ FROM python:3.9-alpine as base
 RUN apk update && \
     apk --no-cache upgrade && \
     apk add bash && \
-    apk add --no-cache --virtual build-deps build-base gcc && \
+    apk add --no-cache --virtual build-deps build-base gcc make && \
     pip install --no-cache-dir aws-sam-cli && \
     apk del build-deps
 ENTRYPOINT ["/usr/local/bin/sam"]
