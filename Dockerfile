@@ -1,6 +1,6 @@
 FROM python:3.9-slim-buster as base
 RUN apt-get -qq update && apt-get -qq upgrade --no-install-recommends && \
-    apt-get -qq install curl bash make build-essential unzip --no-install-recommends && \
+    apt-get -qq install curl bash make build-essential unzip jq --no-install-recommends && \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
     ./aws/install && \
