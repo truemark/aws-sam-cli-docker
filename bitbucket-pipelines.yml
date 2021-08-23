@@ -28,7 +28,7 @@ pipelines:
                 - docker
               script:
                 - docker login --username $DOCKER_HUB_USER --password $DOCKER_HUB_PASS
-                - docker build -t $DOCKER_IMAGE_NAME:$BITBUCKET_BUILD_NUMBER-golang --target node-14 .
+                - docker build -t $DOCKER_IMAGE_NAME:$BITBUCKET_BUILD_NUMBER-node-14 --target node-14 .
                 - docker tag $DOCKER_IMAGE_NAME:$BITBUCKET_BUILD_NUMBER-node-14 $DOCKER_IMAGE_NAME:node-14
                 - docker push $DOCKER_IMAGE_NAME:$BITBUCKET_BUILD_NUMBER-node-14
                 - docker push $DOCKER_IMAGE_NAME:node-14
