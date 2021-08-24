@@ -46,7 +46,7 @@ function aws_authentication() {
   if ! command -v jq &> /dev/null; then echo "jq command missing"; exit 1; fi
   if [[ -n "${AWS_OIDC_ROLE_ARN+x}" ]]; then
     _aws_oidc_authentication
-  elif [[ -n "${AWS_ACCESS_KEY_ID}" ]]; then
+  elif [[ -n "${AWS_ACCESS_KEY_ID+x}" ]]; then
     _aws_default_authentication
   fi
   _aws_assume_role
