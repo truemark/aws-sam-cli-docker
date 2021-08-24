@@ -35,6 +35,7 @@ pipelines:
             - docker tag truemark/aws-sam-cli-pipe:node-14-${FULL_VERSION} truemark/aws-sam-cli-pipe:node-14-${SAM_VERSION}
             - docker tag truemark/aws-sam-cli-pipe:node-14-${FULL_VERSION} truemark/aws-sam-cli-pipe:node-14
 
-#            - docker login --username $DOCKER_HUB_USER --password $DOCKER_HUB_PASS
-#            - docker push truemark/aws-sam-cli
-#            - docker push truemark/aws-sam-cli-pipe
+            # Push Images
+            - docker login --username $DOCKER_HUB_USER --password $DOCKER_HUB_PASS
+            - docker push truemark/aws-sam-cli
+            - docker push truemark/aws-sam-cli-pipe
