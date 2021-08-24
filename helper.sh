@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 function _aws_default_authentication() {
+  AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:?'AWS_DEFAULT_REGION is required'}
   AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:?'AWS_ACCESS_KEY_ID variable is required'}
   AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:?'AWS_SECRET_ACCESS_KEY variable is required'}
 }
 
 function _aws_oidc_authentication() {
+  AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:?'AWS_DEFAULT_REGION is required'}
   AWS_WEB_IDENTITY_TOKEN=${AWS_WEB_IDENTITY_TOKEN:?'AWS_WEB_IDENTITY_TOKEN variable is required'}
   AWS_WEB_IDENTITY_TOKEN_FILE="$(mktemp -t web_identity_token.XXXXXXX)"
   chmod 600 "${AWS_WEB_IDENTITY_TOKEN_FILE}"
@@ -40,7 +42,6 @@ function _aws_assume_role() {
 #    - AWS_ASSUME_ROLE_ARN
 #    - AWS_ROLE_SESSION_NAME
 function aws_authentication() {
-  AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:?'AWS_DEFAULT_REGION is required'}
   if ! command -v aws &> /dev/null; then echo "aws command missing"; exit 1; fi
   if ! command -v jq &> /dev/null; then echo "jq command missing"; exit 1; fi
   if [[ -n "${AWS_OIDC_ROLE_ARN+x}" ]]; then
