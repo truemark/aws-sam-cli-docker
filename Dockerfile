@@ -7,5 +7,5 @@ RUN yum install -y curl bash make unzip jq git gnupg && \
     rm -rf sam-installation aws-sam-cli-linux-x86_64.zip && \
     yum clean all && \
     rm -rf /var/cache/yum
-COPY helper /helper.sh
+COPY helper.sh /helper.sh
 ENTRYPOINT ["/usr/local/bin/sam"]
