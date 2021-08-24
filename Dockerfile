@@ -1,23 +1,11 @@
-FROM python:3.9-slim-buster as base
-RUN apt-get -qq update && apt-get -qq upgrade --no-install-recommends && \
-    apt-get -qq install curl bash make build-essential unzip jq --no-install-recommends && \
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-    unzip awscliv2.zip && \
-    ./aws/install && \
-    rm -rf aws awscliv2.zip && \
-    pip install --no-cache-dir aws-sam-cli && \
-    apt-get -qq remove build-essential && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-COPY helper.sh /helper.sh
+FROM amazon/aws-cli:latest as base
+
+RUN yum install -y curl bash make unzip jq git gnupg && \
+    curl -sSLf https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip -o aws-sam-cli-linux-x86_64.zip && \
+    unzip aws-sam-cli-linux-x86_64.zip -d sam-installation && \
+    ./sam-installation/install && \
+    rm -rf sam-installation aws-sam-cli-linux-x86_64.zip && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+COPY helper /helper.sh
 ENTRYPOINT ["/usr/local/bin/sam"]
-
-FROM base as golang
-COPY --from=golang:buster /usr/local/go/ /usr/local/go/
-ENV GOROOT /usr/local/go
-ENV GOPATH /go
-ENV PATH $GOROOT/bin:/go/bin:$PATH
-
-FROM base as node-14
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
-  apt-get -qq install nodejs && \
-  apt-get clean && rm -rf /var/lib/apt/lists/*
