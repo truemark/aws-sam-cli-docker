@@ -9,5 +9,6 @@ RUN yum install -y tar gzip libicu krb5-libs openssl-libs && \
   ./dotnet-install.sh -c 3.1 && \
   rm -f dotnet-install.sh
 
+ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 ENV DOTNET_ROOT /root/.dotnet
-ENV PATH $DOTNET_ROOT:$PATH
+ENV PATH $DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
