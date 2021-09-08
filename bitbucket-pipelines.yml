@@ -35,7 +35,6 @@ pipelines:
             - docker tag truemark/aws-sam-cli-pipe:node-14-${FULL_VERSION} truemark/aws-sam-cli-pipe:node-14-${SAM_VERSION}
             - docker tag truemark/aws-sam-cli-pipe:node-14-${FULL_VERSION} truemark/aws-sam-cli-pipe:node-14
 
-
             # .NET Core 3.1
             - docker build --build-arg SOURCE_IMAGE="truemark/aws-sam-cli:${FULL_VERSION}" -t truemark/aws-sam-cli:netcore-3.1-${FULL_VERSION} -f netcore-3.1.Dockerfile .
             - docker tag truemark/aws-sam-cli:netcore-3.1-${FULL_VERSION} truemark/aws-sam-cli:netcore-3.1-${SAM_VERSION}
@@ -45,6 +44,16 @@ pipelines:
             - docker build --build-arg SOURCE_IMAGE="truemark/aws-sam-cli:netcore-3.1-${FULL_VERSION}" -t truemark/aws-sam-cli-pipe:netcore-3.1-${FULL_VERSION} -f pipe.Dockerfile .
             - docker tag truemark/aws-sam-cli-pipe:netcore-3.1-${FULL_VERSION} truemark/aws-sam-cli-pipe:netcore-3.1-${SAM_VERSION}
             - docker tag truemark/aws-sam-cli-pipe:netcore-3.1-${FULL_VERSION} truemark/aws-sam-cli-pipe:netcore-3.1
+
+            # Python 3.9
+            - docker build --build-arg SOURCE_IMAGE="truemark/aws-sam-cli:${FULL_VERSION}" -t truemark/aws-sam-cli:python-3.9-${FULL_VERSION} -f python-3.9.Dockerfile .
+            - docker tag truemark/aws-sam-cli:python-3.9-${FULL_VERSION} truemark/aws-sam-cli:python-3.9-${SAM_VERSION}
+            - docker tag truemark/aws-sam-cli:python-3.9-${FULL_VERSION} truemark/aws-sam-cli:python-3.9
+
+            # Python 3.9 Pipe
+            - docker build --build-arg SOURCE_IMAGE="truemark/aws-sam-cli:python-3.9-${FULL_VERSION}" -t truemark/aws-sam-cli-pipe:python-3.9-${FULL_VERSION} -f pipe.Dockerfile .
+            - docker tag truemark/aws-sam-cli-pipe:python-3.9-${FULL_VERSION} truemark/aws-sam-cli-pipe:python-3.9-${SAM_VERSION}
+            - docker tag truemark/aws-sam-cli-pipe:python-3.9-${FULL_VERSION} truemark/aws-sam-cli-pipe:python-3.9
 
             # Push Images
             - docker login --username $DOCKER_HUB_USER --password $DOCKER_HUB_PASS
