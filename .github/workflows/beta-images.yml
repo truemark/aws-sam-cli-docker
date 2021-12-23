@@ -30,6 +30,7 @@ jobs:
             --platform linux/amd64 \
             -t truemark/aws-sam-cli:beta .
       - name: Build Golang Image
+        run: |
           docker buildx build \
             --push \
             --platform linux/amd64 \
