@@ -29,3 +29,7 @@ jobs:
             --push \
             --platform linux/amd64 \
             -t truemark/aws-sam-cli:beta .
+          docker buildx build \
+            --push \
+            --platform linux/amd64 \
+            -t truemark/aws-sam-cli:beta-golang -f golang.Dockerfile
