@@ -37,3 +37,28 @@ jobs:
             --build-arg SOURCE_IMAGE="truemark/aws-sam-cli:beta" \
             -f golang.Dockerfile \
             -t truemark/aws-sam-cli:beta-golang .
+      - name: Build .NET 3.1 Image \
+        run: |
+          docker buildx build \
+            --push \
+            --platform linux/amd64 \
+            --build-arg SOURCE_IMAGE="truemark/aws-sam-cli:beta" \
+            -f netcore-3.1.Dockerfile \
+            -t truemark/aws-sam-cli:beta-netcore-3.1
+      - name: Build Node 14 Image \
+        run: |
+          docker buildx build \
+            --push \
+            --platform linux/amd64 \
+            --build-arg SOURCE_IMAGE="truemark/aws-sam-cli:beta" \
+            -f node-14.Dockerfile \
+            -t truemark/aws-sam-cli:beta-node-14
+      - name: Build Python 3.9 Image \
+        run: |
+          docker buildx build \
+            --push \
+            --platform linux/amd64 \
+            --build-arg SOURCE_IMAGE="truemark/aws-sam-cli:beta" \
+            -f python-3.9.Dockerfile \
+            -t truemark/aws-sam-cli:beta-python-3.9
+      
