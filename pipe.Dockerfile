@@ -1,4 +1,0 @@
-ARG SOURCE_IMAGE
-FROM $SOURCE_IMAGE
-COPY pipe.sh /pipe.sh
-ENTRYPOINT ["/pipe.sh"]
