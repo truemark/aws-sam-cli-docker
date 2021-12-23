@@ -1,7 +1,7 @@
 ARG SOURCE_IMAGE
 FROM $SOURCE_IMAGE
 
-RUN yum install -y tar gzip zip libicu krb5-libs openssl-libs && \
+RUN yum install -q -y tar gzip zip libicu krb5-libs openssl-libs && \
   curl -fsSL https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh && \
   chmod +x dotnet-install.sh && \
   ./dotnet-install.sh -c 3.1 && \
