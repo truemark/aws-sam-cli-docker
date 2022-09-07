@@ -7,3 +7,4 @@ RUN yum install -q -y make unzip gnupg && \
     rm -rf sam-installation aws-sam-cli-linux-x86_64.zip && \
     yum clean all && \
     rm -rf /var/cache/yum
+
