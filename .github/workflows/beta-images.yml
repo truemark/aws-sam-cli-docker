@@ -62,7 +62,7 @@ jobs:
           --push \
           --platform linux/arm64,linux/amd64 \
           -t truemark/aws-sam-cli:beta-go \
-          --target base .
+          --target go .
       - name: Copy beta-go to ECR
         uses: truemark/skopeo-copy-action@v1
         with:
@@ -79,7 +79,7 @@ jobs:
           --push \
           --platform linux/arm64,linux/amd64 \
           -t truemark/aws-sam-cli:beta-dotnet6 \
-          --target base .
+          --target dotnet6 .
       - name: Copy beta-dotnet6 to ECR
         uses: truemark/skopeo-copy-action@v1
         with:
@@ -96,7 +96,7 @@ jobs:
           --push \
           --platform linux/arm64,linux/amd64 \
           -t truemark/aws-sam-cli:beta-dotnet7 \
-          --target base .
+          --target dotnet7 .
       - name: Copy beta-dotnet7 to ECR
         uses: truemark/skopeo-copy-action@v1
         with:
@@ -113,7 +113,7 @@ jobs:
           --push \
           --platform linux/arm64,linux/amd64 \
           -t truemark/aws-sam-cli:beta-node-18 \
-          --target base .
+          --target node18 .
       - name: Copy beta-node-18 to ECR
         uses: truemark/skopeo-copy-action@v1
         with:
