@@ -83,8 +83,8 @@ jobs:
       - name: Copy beta-dotnet6 to ECR
         uses: truemark/skopeo-copy-action@v1
         with:
-          src-image: "docker://truemark/aws-sam-cli:dotnet6"
-          dest-image: "docker://public.ecr.aws/truemark/aws-sam-cli:dotnet6"
+          src-image: "docker://truemark/aws-sam-cli:beta-dotnet6"
+          dest-image: "docker://public.ecr.aws/truemark/aws-sam-cli:beta-dotnet6"
           src-username: "${{ secrets.DOCKER_HUB_USERNAME }}"
           src-password: "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}"
           dest-username: "${{ steps.ecr-login.outputs.docker_username_public_ecr_aws }}"
@@ -100,8 +100,8 @@ jobs:
       - name: Copy beta-dotnet7 to ECR
         uses: truemark/skopeo-copy-action@v1
         with:
-          src-image: "docker://truemark/aws-sam-cli:dotnet7"
-          dest-image: "docker://public.ecr.aws/truemark/aws-sam-cli:dotnet7"
+          src-image: "docker://truemark/aws-sam-cli:beta-dotnet7"
+          dest-image: "docker://public.ecr.aws/truemark/aws-sam-cli:beta-dotnet7"
           src-username: "${{ secrets.DOCKER_HUB_USERNAME }}"
           src-password: "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}"
           dest-username: "${{ steps.ecr-login.outputs.docker_username_public_ecr_aws }}"
@@ -117,8 +117,8 @@ jobs:
       - name: Copy beta-node-18 to ECR
         uses: truemark/skopeo-copy-action@v1
         with:
-          src-image: "docker://truemark/aws-sam-cli:node-18"
-          dest-image: "docker://public.ecr.aws/truemark/aws-sam-cli:node-18"
+          src-image: "docker://truemark/aws-sam-cli:beta-node-18"
+          dest-image: "docker://public.ecr.aws/truemark/aws-sam-cli:beta-node-18"
           src-username: "${{ secrets.DOCKER_HUB_USERNAME }}"
           src-password: "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}"
           dest-username: "${{ steps.ecr-login.outputs.docker_username_public_ecr_aws }}"
