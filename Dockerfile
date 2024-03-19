@@ -28,7 +28,7 @@ ENV DOTNET_ROOT="/root/.dotnet"
 ENV PATH="/root/.dotnet:${PATH}"
 
 FROM base AS go
-RUN curl -sfSL "https://go.dev/dl/$(curl -sfSL 'https://go.dev/VERSION?m=text').linux-arm64.tar.gz" -o go.tar.gz && \
+RUN curl -sfSL "https://go.dev/dl/$(curl -sfSL 'https://go.dev/VERSION?m=text'| grep 'go').linux-arm64.tar.gz" -o go.tar.gz && \
     tar -C /usr/local -xzf go.tar.gz && \
     rm go.tar.gz
 ENV GOROOT=/usr/local/go
